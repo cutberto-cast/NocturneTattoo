@@ -107,3 +107,44 @@
     letter-spacing: 0.05em;
     margin: 0;
 }
+
+/* ========================= */
+/* MOBILE INSTAGRAM LAYOUT   */
+/* ========================= */
+@media (max-width: 768px) {
+    .container {
+        padding: 5rem 0 2rem 0;
+        /* Remove side padding for full bleed */
+    }
+
+    .header {
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.15rem;
+        /* Tiny gap like IG */
+        padding: 0;
+    }
+
+    .projectCard {
+        gap: 0;
+    }
+
+    .imageWrapper {
+        aspect-ratio: 1 / 1;
+        /* Square images */
+        border-radius: 0;
+    }
+
+    .info {
+        display: none;
+        /* Hide text to match IG grid */
+    }
+}

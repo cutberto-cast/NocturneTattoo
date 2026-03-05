@@ -13,10 +13,24 @@
 }
 
 .grid {
-    display: grid;
-    /* Force 3 columns globally */
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+    display: flex;
+    overflow-x: auto;
+    gap: 2rem;
+    padding: 0 2rem;
+    /* Give room at edges */
+    scrollbar-width: none;
+    /* Hide scrollbar Firefox */
+    -ms-overflow-style: none;
+    /* Hide scrollbar IE */
+
+    /* Fade out edges */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.grid::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
 }
 
 .card {
@@ -24,6 +38,8 @@
     overflow: hidden;
     cursor: pointer;
     aspect-ratio: 3/4;
+    flex: 0 0 clamp(250px, 75vw, 380px);
+    /* Size controls */
 }
 
 .imageWrapper {
@@ -41,7 +57,7 @@
     transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.card:hover .image {
+.activeCard .image {
     transform: scale(1.03);
     filter: grayscale(0%) contrast(1) brightness(1);
 }
@@ -62,7 +78,7 @@
     transition: all 0.5s ease;
 }
 
-.card:hover .infoOverlay {
+.activeCard .infoOverlay {
     opacity: 1;
     transform: translateY(0);
 }
@@ -109,10 +125,10 @@
     }
 
     .grid {
-        /* Maintain 3 columns even on tiny screens */
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.25rem;
-        /* very small gap to fit width */
+        gap: 1.5rem;
+        padding: 0 1rem;
+        -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
     }
 
     .infoOverlay {
@@ -135,22 +151,5 @@
         padding: 0.3rem 0.5rem;
         border-radius: 4px;
         margin-top: 0.25rem;
-    }
-
-    .image {
-        /* Add a pulse animation to reveal the real color on mobile since there is no hover */
-        animation: revealColorMobile 6s infinite ease-in-out;
-    }
-
-    @keyframes revealColorMobile {
-
-        0%,
-        100% {
-            filter: grayscale(100%) contrast(1.1);
-        }
-
-        50% {
-            filter: grayscale(0%) contrast(1) brightness(1);
-        }
     }
 }

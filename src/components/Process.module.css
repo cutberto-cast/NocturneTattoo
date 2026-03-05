@@ -1,16 +1,25 @@
 .processSection {
+    position: relative;
+    width: 100vw;
+    background-color: #000;
+}
+
+.desktopView {
+    display: block;
+    position: relative;
     padding: 2rem 0;
     min-height: 100vh;
-    /* Allow it to fit to viewport cleanly */
-    background-color: #000;
-    /* Fondo negro real */
-    position: relative;
-    overflow: hidden;
     display: flex;
     align-items: center;
 }
 
-/* Background Wrapper */
+.mobileView {
+    display: none;
+}
+
+/* ========================= */
+/* DESKTOP STYLES            */
+/* ========================= */
 .bgWrapper {
     position: absolute;
     inset: 0;
@@ -20,29 +29,21 @@
     align-items: center;
 }
 
-/* IMAGEN DESKTOP */
 .bgImage {
     height: 100%;
-    /* Respeta altura completa */
     width: auto;
-    /* El ancho puede desbordar */
     max-width: none;
-    /* Clave para que desborde a los costados sin comprimirse */
     object-fit: cover;
     object-position: center center;
 }
 
-/* Overlay */
 .bgOverlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center,
-            rgba(0, 0, 0, 0.15) 0%,
-            rgba(0, 0, 0, 0.85) 85%);
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.85) 85%);
     pointer-events: none;
 }
 
-/* Contenido */
 .contentContainer {
     position: relative;
     z-index: 10;
@@ -50,7 +51,7 @@
 }
 
 .title {
-    font-family: "Playfair Display", "Times New Roman", serif;
+    font-family: var(--font-cinzel, "Playfair Display", "Times New Roman", serif);
     font-style: italic;
     font-size: clamp(3rem, 6vw, 4.5rem);
     text-align: center;
@@ -59,16 +60,12 @@
     font-weight: 300;
 }
 
-/* Grid Desktop */
 .grid {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    /* Center space wider, pushing items to edges */
     grid-template-rows: auto auto;
     gap: 2rem 1rem;
-    /* Reduced vertical gap */
     max-width: 1500px;
-    /* Widened to push to the sides */
     width: 100%;
     margin: 0 auto;
     align-items: center;
@@ -92,19 +89,15 @@
 
 .itemRight {
     grid-column: 3;
-    /* Rows handled naturally by grid auto-placement */
 }
 
-/* Card */
 .itemContent {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 1rem;
-    /* Reducido para ahorrar altura */
     padding: 1.5rem;
-    /* Reducido para evitar desbordamiento */
     border-radius: 12px;
     background: rgba(10, 10, 10, 0.4);
     backdrop-filter: blur(8px);
@@ -140,7 +133,7 @@
 }
 
 .itemTitle {
-    font-family: var(--font-sans);
+    font-family: var(--font-cinzel, var(--font-sans));
     font-size: 1.1rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -155,41 +148,145 @@
 }
 
 /* ========================= */
-/* MOBILE VERSION */
+/* MOBILE VERSION            */
 /* ========================= */
 
 @media (max-width: 1024px) {
-
-    .processSection {
-        height: auto;
-        min-height: 100vh;
-        padding: 6rem 0;
-    }
-
-    .bgImage {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        /* En mobile sí permitimos recorte */
-        object-position: center center;
-    }
-
-    .bgOverlay {
-        background: rgba(0, 0, 0, 0.75);
-    }
-
-    .grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .centerSpace {
+    .desktopView {
         display: none;
     }
 
-    .itemLeft,
-    .itemRight {
-        grid-column: 1;
-        grid-row: auto;
+    .mobileView {
+        display: block;
+        width: 100%;
+        position: relative;
+    }
+
+    .processSection {
+        min-height: 100vh;
+        padding: 100px 0 80px;
+        background: black;
+        overflow: hidden;
+    }
+
+    .mobileBg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        z-index: 1;
+    }
+
+    .mobileOverlay {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 45%, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.88) 75%);
+        z-index: 2;
+    }
+
+    .mobileContent {
+        position: relative;
+        z-index: 5;
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    .mobileTitle {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 64px;
+        font-family: var(--font-cinzel, "Playfair Display", "Georgia", serif);
+        font-style: italic;
+        font-weight: 300;
+        color: white;
+        letter-spacing: -0.01em;
+    }
+
+    .timelineWrapper {
+        position: relative;
+        padding: 0;
+    }
+
+    .timeline {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(200, 0, 0, 0), rgba(200, 0, 0, 0.75) 15%, rgba(200, 0, 0, 0.75) 85%, rgba(200, 0, 0, 0));
+        transform-origin: top;
+        transform: translateX(-50%);
+    }
+
+    .step {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 52px;
+        opacity: 0;
+    }
+
+    .left {
+        justify-content: flex-start;
+        padding-right: calc(50% + 30px);
+    }
+
+    .right {
+        justify-content: flex-end;
+        padding-left: calc(50% + 30px);
+    }
+
+    .node {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: #0a0a0a;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.85);
+        z-index: 3;
+        flex-shrink: 0;
+        box-shadow: 0 0 14px rgba(200, 0, 0, 0.2), inset 0 0 8px rgba(200, 0, 0, 0.05);
+    }
+
+    .card {
+        width: 100%;
+        padding: 14px 16px 16px;
+        border-radius: 8px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(8, 8, 8, 0.60);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-top: 1px solid rgba(200, 0, 0, 0.25);
+    }
+
+    .card h3 {
+        font-family: var(--font-cinzel, "Playfair Display", "Georgia", serif);
+        font-size: 0.82rem;
+        font-weight: 500;
+        font-style: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.10em;
+        margin-bottom: 8px;
+        color: rgba(255, 255, 255, 0.92);
+        line-height: 1.35;
+    }
+
+    .card p {
+        font-family: var(--font-sans);
+        font-size: 0.78rem;
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.52);
+        margin: 0;
     }
 }
