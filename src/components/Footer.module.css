@@ -1,0 +1,132 @@
+.footerSection {
+    padding: 8rem 0 2rem;
+    background-color: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+}
+
+.agendaGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 4rem;
+    margin-bottom: 6rem;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.columnTitle {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--color-text);
+    font-weight: 300;
+}
+
+.infoText {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+}
+
+.highlight {
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.footerBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 3rem;
+    border-top: 1px solid var(--color-border);
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.logo {
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--color-text);
+}
+
+.socials {
+    display: flex;
+    gap: 2rem;
+}
+
+.socialLink {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    transition: color 0.3s ease;
+}
+
+.socialLink:hover {
+    color: var(--color-text);
+}
+
+.copyright {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+/* ========================= */
+/* RESPONSIVE LAYOUT         */
+/* ========================= */
+
+@media (max-width: 1024px) {
+    .footerSection {
+        padding: 5rem 0 2rem;
+    }
+
+    .agendaGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+        margin-bottom: 4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .footerSection {
+        padding: 4rem 0 2rem;
+    }
+
+    .agendaGrid {
+        grid-template-columns: repeat(2, 1fr);
+        /* Ensure it stays 2 columns on mobile */
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .columnTitle {
+        font-size: 1.1rem;
+    }
+
+    .infoText {
+        font-size: 0.85rem;
+    }
+
+    .footerBottom {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding-top: 2rem;
+        text-align: center;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .socials {
+        justify-content: center;
+        gap: 1.5rem;
+    }
+}

@@ -1,0 +1,399 @@
+.hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #050505;
+    color: #ffffff;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    box-sizing: border-box;
+}
+
+.bgVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.5;
+    /* Managed by GSAP */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.9) 100%);
+    pointer-events: none;
+}
+
+/* ================================== */
+/* DESKTOP VIEW                       */
+/* ================================== */
+
+.desktopView {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 2rem 3rem;
+    position: relative;
+    z-index: 10;
+}
+
+.topNav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+}
+
+.navBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+.navBlock p {
+    margin: 0;
+}
+
+.navRight {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bookVisit {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.bookVisit:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.centerContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.hugeText {
+    font-family: var(--font-serif, 'Georgia', serif);
+    font-size: clamp(3rem, 8vw, 10rem);
+    color: rgba(255, 255, 255, 0.15);
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.bottomContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.bottomLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 400px;
+}
+
+.smallText {
+    margin: 0;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1;
+}
+
+.mediumText {
+    margin: 0;
+    font-size: 2.2rem;
+    line-height: 1.1;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+}
+
+.descText {
+    margin: 0;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-top: 0.5rem;
+}
+
+/* ================================== */
+/* SOCIAL BLOB BUTTON & TOOLTIPS      */
+/* ================================== */
+
+.socials {
+    display: flex;
+    gap: 4.3rem;
+    align-items: center;
+    margin-bottom: 60px;
+    /* Evita conflicto con el botón de Agendar */
+}
+
+.socialBtnGroup {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(15, 15, 15, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    text-transform: capitalize;
+    font-family: var(--font-sans);
+}
+
+.socialBtnGroup:hover .tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.socialBtn {
+    z-index: 50;
+    position: relative;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    font-size: 0.8rem;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition: color 0.5s, transform 0.3s ease;
+    cursor: pointer;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.socialBtn:before {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+}
+
+.socialBtn:after {
+    content: "";
+    z-index: -2;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s 0.2s;
+    border-radius: 50%;
+}
+
+.socialBtn:hover {
+    color: #FFFFFF;
+    transform: translateY(-3px);
+}
+
+.socialBtn:hover:after {
+    transition: all 0.3s;
+    left: 0;
+    top: 0;
+}
+
+.socialBtnInner {
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #000000;
+}
+
+.socialBtnBlobs {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url("#gooHero");
+}
+
+.socialBtnBlob {
+    position: absolute;
+    top: 2px;
+    width: 25%;
+    height: 100%;
+    background: #cc0000;
+    border-radius: 100%;
+    transform: translate3d(0, 150%, 0) scale(1.7);
+    transition: transform 0.45s;
+}
+
+@supports (filter: url("#gooHero")) {
+    .socialBtnBlob {
+        transform: translate3d(0, 150%, 0) scale(1.4);
+    }
+}
+
+.socialBtnBlob:nth-child(1) {
+    left: 0%;
+    transition-delay: 0s;
+}
+
+.socialBtnBlob:nth-child(2) {
+    left: 30%;
+    transition-delay: 0.08s;
+}
+
+.socialBtnBlob:nth-child(3) {
+    left: 60%;
+    transition-delay: 0.16s;
+}
+
+.socialBtnBlob:nth-child(4) {
+    left: 90%;
+    transition-delay: 0.24s;
+}
+
+.socialBtn:hover .socialBtnBlob {
+    transform: translateZ(0) scale(1.7);
+}
+
+@supports (filter: url("#gooHero")) {
+    .socialBtn:hover .socialBtnBlob {
+        transform: translateZ(0) scale(1.4);
+    }
+}
+
+/* ================================== */
+/* MOBILE VIEW                        */
+/* ================================== */
+
+.mobileView {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.mobileCenterContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    height: 100%;
+    padding: 0 1.5rem;
+}
+
+.mobileCenterText {
+    font-family: var(--font-cinzel, 'Georgia', serif);
+    font-size: clamp(3.5rem, 15vw, 6rem);
+    color: var(--color-text);
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-align: center;
+}
+
+.bottomNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1rem, 4vw, 2rem);
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.bottomNav .navBlock {
+    text-transform: uppercase;
+    font-size: clamp(0.6rem, 2vw, 0.9rem);
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.bottomNav .navBlock:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.socialsMobile {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 30px;
+    /* Evita conflicto con el botón de Agendar en mobile también */
+}
+
+/* ================================== */
+/* MEDIA QUERIES                      */
+/* ================================== */
+
+@media (max-width: 1024px) {
+    .topNav {
+        grid-template-columns: repeat(4, 1fr);
+        font-size: 0.65rem;
+        gap: 1rem;
+    }
+
+    .hugeText {
+        font-size: clamp(5rem, 12vw, 8rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .desktopView {
+        display: none;
+    }
+
+    .mobileView {
+        display: block;
+    }
+}

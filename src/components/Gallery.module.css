@@ -1,0 +1,397 @@
+.galleryWrapper {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-bg);
+    display: flex;
+    align-items: center;
+}
+
+.galleryContainer {
+    display: flex;
+    height: 60vh;
+    /* Reduced height as requested */
+    padding: 0 10vw;
+    gap: 5vw;
+}
+
+.panel {
+    flex-shrink: 0;
+    width: 40vw;
+    /* Reduced width */
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.imageWrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.panel:hover .imageWrapper {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
+.panel:hover~.panel .imageWrapper,
+.galleryContainer:hover .panel:not(:hover) .imageWrapper {
+    filter: blur(4px) brightness(0.4);
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(80%) contrast(1.2);
+    transition: filter 0.6s ease;
+}
+
+.panel:hover .image {
+    filter: grayscale(0%) contrast(1.1);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.panel:hover .overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.overlayTitle {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+}
+
+.overlayInfo {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modalClose {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.modalClose:hover {
+    transform: scale(1.1) rotate(90deg);
+}
+
+.modalContent {
+    display: flex;
+    width: 90vw;
+    height: 80vh;
+    gap: 4rem;
+    align-items: center;
+}
+
+.modalImageContainer {
+    flex: 2;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalImage {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.05);
+}
+
+.modalInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.modalTitle {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--color-text);
+}
+
+.modalDetail {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.5rem;
+}
+
+.modalDetail span {
+    color: var(--color-text);
+    margin-left: 0.5rem;
+}
+
+/* CTA Panel */
+.ctaPanel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* very subtle border */
+    position: relative;
+    z-index: 1;
+}
+
+.ctaPanel:hover {
+    background-color: #1a1a1a;
+}
+
+.ctaWrapper {
+    text-align: center;
+    padding: 3rem;
+}
+
+.ctaTitle {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-text);
+    margin-bottom: 2rem;
+}
+
+.ctaButton {
+    z-index: 10;
+    position: relative;
+    padding: 1rem 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    font-family: var(--font-sans);
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition: color 0.5s, transform 0.3s ease;
+    cursor: pointer;
+    border-radius: 30px;
+    display: inline-block;
+    width: max-content;
+    text-decoration: none;
+}
+
+.ctaButton:before {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+}
+
+.ctaButton:after {
+    content: "";
+    z-index: -2;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s 0.2s;
+    border-radius: 30px;
+}
+
+.ctaButton:hover {
+    color: #ffffff;
+    border-radius: 30px;
+    transform: translateY(-5px);
+}
+
+.ctaButton:hover:after {
+    transition: all 0.3s;
+    left: 0;
+    top: 0;
+    border-radius: 30px;
+}
+
+.ctaButtonInner {
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    background: #111111;
+}
+
+.ctaButtonBlobs {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url("#gooGallery");
+}
+
+.ctaButtonBlob {
+    position: absolute;
+    top: 2px;
+    width: 25%;
+    height: 100%;
+    background: #cc0000;
+    border-radius: 100%;
+    transform: translate3d(0, 150%, 0) scale(1.7);
+    transition: transform 0.45s;
+}
+
+@supports (filter: url("#gooGallery")) {
+    .ctaButtonBlob {
+        transform: translate3d(0, 150%, 0) scale(1.4);
+    }
+}
+
+.ctaButtonBlob:nth-child(1) {
+    left: 0%;
+    transition-delay: 0s;
+}
+
+.ctaButtonBlob:nth-child(2) {
+    left: 30%;
+    transition-delay: 0.08s;
+}
+
+.ctaButtonBlob:nth-child(3) {
+    left: 60%;
+    transition-delay: 0.16s;
+}
+
+.ctaButtonBlob:nth-child(4) {
+    left: 90%;
+    transition-delay: 0.24s;
+}
+
+.ctaButton:hover .ctaButtonBlob {
+    transform: translateZ(0) scale(1.7);
+}
+
+@supports (filter: url("#gooGallery")) {
+    .ctaButton:hover .ctaButtonBlob {
+        transform: translateZ(0) scale(1.4);
+    }
+}
+
+/* ========================= */
+/* MOBILE VERSION            */
+/* ========================= */
+
+@media (max-width: 768px) {
+    .galleryWrapper {
+        height: 100vh;
+        padding: 0;
+        display: flex;
+    }
+
+    .galleryContainer {
+        height: 50vh;
+        /* Shorter for mobile */
+        padding: 0 5vw;
+        gap: 2rem;
+        flex-direction: row;
+        /* Force row to match desktop */
+    }
+
+    .panel {
+        width: 85vw;
+        /* Fills most of the screen width */
+        height: 100%;
+    }
+
+    /* Override hover effects for mobile (touch devices) */
+    .imageWrapper {
+        filter: none !important;
+        transform: none !important;
+    }
+
+    .image {
+        filter: grayscale(0%) contrast(1.1) brightness(0.8) !important;
+    }
+
+    .overlay {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+        padding: 1.5rem;
+    }
+
+    .overlayTitle {
+        font-size: 1.5rem;
+    }
+
+    .ctaPanel {
+        padding: 3rem 1rem;
+        height: auto;
+        min-height: 40vh;
+    }
+
+    .ctaTitle {
+        font-size: 1.8rem;
+    }
+
+    .ctaButton {
+        font-size: 0.8rem;
+        padding: 1rem 1.5rem;
+    }
+}

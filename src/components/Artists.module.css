@@ -1,0 +1,156 @@
+.artistsSection {
+    padding: 8rem 0;
+    background-color: var(--color-bg);
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    text-align: center;
+    color: var(--color-text);
+    margin-bottom: 5rem;
+    font-weight: 300;
+}
+
+.grid {
+    display: grid;
+    /* Force 3 columns globally */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 3/4;
+}
+
+.imageWrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.1);
+    transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.card:hover .image {
+    transform: scale(1.03);
+    filter: grayscale(0%) contrast(1) brightness(1);
+}
+
+.infoOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 50%);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.card:hover .infoOverlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.name {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+}
+
+.specialty {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: #ffffff;
+    /* White text for contrast */
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+
+    background: rgba(10, 10, 10, 0.85);
+    /* Revert to dark glass */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Soft border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    /* Deep shadow */
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+/* ========================= */
+/* MOBILE VERSION            */
+/* ========================= */
+@media (max-width: 768px) {
+    .artistsSection {
+        padding: 5rem 0;
+    }
+
+    .title {
+        margin-bottom: 3rem;
+    }
+
+    .grid {
+        /* Maintain 3 columns even on tiny screens */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.25rem;
+        /* very small gap to fit width */
+    }
+
+    .infoOverlay {
+        padding: 0.75rem;
+        opacity: 1;
+        /* Always visible on mobile to identify them */
+        transform: translateY(0);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent 80%);
+    }
+
+    .name {
+        font-size: clamp(0.6rem, 2.5vw, 1rem);
+        /* shrink aggressively on small phones */
+        margin-bottom: 0.1rem;
+    }
+
+    .specialty {
+        font-size: clamp(0.4rem, 1.5vw, 0.6rem);
+        letter-spacing: 0;
+        padding: 0.3rem 0.5rem;
+        border-radius: 4px;
+        margin-top: 0.25rem;
+    }
+
+    .image {
+        /* Add a pulse animation to reveal the real color on mobile since there is no hover */
+        animation: revealColorMobile 6s infinite ease-in-out;
+    }
+
+    @keyframes revealColorMobile {
+
+        0%,
+        100% {
+            filter: grayscale(100%) contrast(1.1);
+        }
+
+        50% {
+            filter: grayscale(0%) contrast(1) brightness(1);
+        }
+    }
+}
