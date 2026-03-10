@@ -106,8 +106,8 @@ export default function Hero() {
                 </div>
 
                 <div className={styles.centerContent}>
-                    <h1 className={styles.hugeText}>Black</h1>
-                    <h1 className={styles.hugeText}>Ritual</h1>
+                    <h1 className={styles.hugeText}>BLACK</h1>
+                    <h1 className={styles.hugeText}>PULSE</h1>
                 </div>
 
                 <div className={styles.bottomContent}>
@@ -115,7 +115,7 @@ export default function Hero() {
                         <p className={styles.smallText}>Tinta en la penumbra</p>
                         <h2 className={styles.mediumText}>Arte nacido de la oscuridad</h2>
                         <p className={styles.descText}>
-                            Bienvenido a Black Ritual,<br />
+                            Bienvenido a Black Pulse,<br />
                             donde cada diseño trasciende<br />
                             más allá de la piel
                         </p>
