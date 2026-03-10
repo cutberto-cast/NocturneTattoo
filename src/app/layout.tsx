@@ -20,7 +20,7 @@ const cinzel = Cinzel({
 });
 
 export const metadata: Metadata = {
-  title: "Black Ritual Studio | Ink as Permanent Art",
+  title: "Black Pulse estudio",
   description: "A premium tattoo studio focused on technical perfection, extreme cleanliness, visual order, and a sophisticated aesthetic experience.",
 };
 
