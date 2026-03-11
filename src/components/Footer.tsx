@@ -68,7 +68,7 @@ export default function Footer() {
                 </div>
 
                 <div className={styles.footerBottom}>
-                    <div className={styles.logo}>Black Ritual</div>
+                    <div className={styles.logo}>Black Pulse</div>
 
                     <div className={styles.socials}>
                         <a href="#" className={styles.socialLink}>Instagram</a>
@@ -77,7 +77,7 @@ export default function Footer() {
                     </div>
 
                     <div className={styles.copyright}>
-                        © {new Date().getFullYear()} Black Ritual Studio. Ink as Permanent Art.
+                        © {new Date().getFullYear()} Black Pulse Studio. Ink as Permanent Art.
                     </div>
                 </div>
 

@@ -60,7 +60,7 @@ export default function Philosophy() {
                             No somos un estudio comercial. Somos una galería de arte donde el lienzo respira.
                         </h2>
                         <p className={styles.paragraph}>
-                            En Black Ritual Studio, curamos cada pieza con rigor técnico y limpieza clínica.
+                            En Black Pulse Studio, curamos cada pieza con rigor técnico y limpieza clínica.
                             Creemos en la perfección del trazo, la armonía del espacio y la permanencia de la tinta.
                             Cada sesión es una experiencia estética diseñada para quienes entienden el tatuaje como la forma suprema del arte contemporáneo.
                         </p>

@@ -82,7 +82,7 @@ export default function Hero() {
                 <div className={styles.topNav}>
                     <div className={styles.navBlock}>
                         <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>
-                            <p>BLACK RITUAL STUDIO</p>
+                            <p>BLACK PULSE</p>
                         </Link>
                     </div>
                     <div className={styles.navBlock}>
@@ -131,7 +131,7 @@ export default function Hero() {
             {/* MOBILE LAYOUT (Hidden on desktop) */}
             <div className={styles.mobileView}>
                 <div className={styles.mobileCenterContent}>
-                    <h1 className={`${styles.hugeText} ${styles.mobileCenterText}`}>BLACK RITUAL</h1>
+                    <h1 className={`${styles.hugeText} ${styles.mobileCenterText}`}>BLACK PULSE</h1>
 
                     <div className={styles.bottomNav}>
                         <div className={styles.navBlock}>

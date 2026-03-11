@@ -6,7 +6,7 @@ import gsap from "gsap";
 
 export default function WhatsAppBtn() {
     const [mounted, setMounted] = useState(false);
-    const message = "Hola, quiero agendar una cita en Black Ritual Studio.";
+    const message = "Hola, quiero agendar una cita en Black Pulse Studio.";
     const phone = "1234567890"; // Reemplazar con el número real
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 

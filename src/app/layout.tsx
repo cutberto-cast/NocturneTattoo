@@ -20,7 +20,7 @@ const cinzel = Cinzel({
 });
 
 export const metadata: Metadata = {
-  title: "Black Pulse estudio",
+  title: "Black Pulse",
   description: "A premium tattoo studio focused on technical perfection, extreme cleanliness, visual order, and a sophisticated aesthetic experience.",
 };
 
