@@ -15,17 +15,17 @@ const ARTISTS = [
     {
         name: "Mike",
         specialty: "Blackwork & Dark Realism",
-        image: "/images/gallery/artistas/des1.jpg",
+        image: "/images/gallery/artistas/des1.webp",
     },
     {
         name: "Elena",
         specialty: "Minimalist & Dotwork",
-        image: "/images/gallery/artistas/des2.jpg",
+        image: "/images/gallery/artistas/des2.webp",
     },
     {
         name: "Marco",
         specialty: "Fine Line & Sacred Geometry",
-        image: "/images/gallery/artistas/des3.jpg",
+        image: "/images/gallery/artistas/des3.webp",
     },
 ];
 
@@ -111,10 +111,6 @@ export default function Artists() {
                     className={styles.grid}
                     ref={gridRef}
                     onScroll={handleScroll}
-                    onMouseEnter={() => setIsPaused(true)}
-                    onMouseLeave={() => setIsPaused(false)}
-                    onTouchStart={() => setIsPaused(true)}
-                    onTouchEnd={() => setIsPaused(false)}
                 >
                     {DISPLAY_ARTISTS.map((artist, idx) => (
                         <div key={idx} className={`${styles.card} ${activeIndex === idx ? styles.activeCard : ''}`}>

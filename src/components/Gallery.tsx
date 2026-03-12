@@ -14,7 +14,7 @@ if (typeof window !== "undefined") {
 const GALLERY_DATA = [
     {
         id: 1,
-        url: "/images/gallery/tattoo/des1.jpg",
+        url: "/images/gallery/tattoo/des1.webp",
         title: "Misticismo",
         style: "Blackwork",
         zone: "Brazo completo",
@@ -22,7 +22,7 @@ const GALLERY_DATA = [
     },
     {
         id: 2,
-        url: "/images/gallery/tattoo/des2.jpg",
+        url: "/images/gallery/tattoo/des2.webp",
         title: "Geometría Sagrada",
         style: "Dotwork",
         zone: "Espalda",
@@ -30,7 +30,7 @@ const GALLERY_DATA = [
     },
     {
         id: 3,
-        url: "/images/gallery/tattoo/des3.jpg",
+        url: "/images/gallery/tattoo/des3.webp",
         title: "Naturaleza Muerta",
         style: "Fine Line",
         zone: "Antebrazo",
@@ -38,7 +38,7 @@ const GALLERY_DATA = [
     },
     {
         id: 4,
-        url: "/images/gallery/tattoo/des4.jpg",
+        url: "/images/gallery/tattoo/des4.webp",
         title: "Caos Ordenado",
         style: "Realismo Oscuro",
         zone: "Pierna",
@@ -46,7 +46,7 @@ const GALLERY_DATA = [
     },
     {
         id: 5,
-        url: "/images/gallery/tattoo/des5.jpg",
+        url: "/images/gallery/tattoo/des5.webp",
         title: "Ecos",
         style: "Minimalista",
         zone: "Costillas",
@@ -78,6 +78,9 @@ export default function Gallery() {
     return (
         <>
             <section className={styles.galleryWrapper} ref={wrapperRef}>
+                <div className={styles.header}>
+                    <h2 className={styles.title}>Proyectos</h2>
+                </div>
                 <div className={styles.galleryContainer} ref={containerRef}>
                     {GALLERY_DATA.map((item) => (
                         <div

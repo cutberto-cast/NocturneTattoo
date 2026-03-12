@@ -7,7 +7,7 @@ import styles from "./Studio.module.css";
 
 const STUDIO_IMAGES = Array.from({ length: 12 }, (_, i) => ({
     id: i + 1,
-    url: `/images/gallery/estudio/des${i + 1}.jpg`,
+    url: `/images/gallery/estudio/des${i + 1}.webp`,
     alt: `Estudio interior ${i + 1}`,
 }));
 

@@ -18,13 +18,13 @@ function procesarDirectorio(directorio) {
                 .webp({ quality: 85 })
                 .toFile(rutaSalida)
                 .then(() => {
-                    console.log(`✅ Convertido: ${archivo} -> ${path.basename(rutaSalida)}`);
+                    console.log(`Convertido: ${archivo} -> ${path.basename(rutaSalida)}`);
 
                     fs.unlinkSync(rutaCompleta);
-                    console.log(`🗑️  Eliminado: ${archivo}`);
+                    console.log(`Eliminado: ${archivo}`);
                 })
                 .catch(err => {
-                    console.error(`❌ Error al procesar ${archivo}:`, err);
+                    console.error(`Error al procesar ${archivo}:`, err);
                 });
         }
     });

@@ -108,7 +108,7 @@ export default function Process() {
             <div className={styles.desktopView}>
                 <picture className={styles.bgWrapper}>
                     <img
-                        src="/images/protocolo-bg.png"
+                        src="/images/protocolo-bg.webp"
                         alt="Process Background"
                         className={styles.bgImage}
                     />
@@ -166,7 +166,7 @@ export default function Process() {
             {/* MOBILE VIEW */}
             <div className={styles.mobileView}>
                 <img
-                    src="/images/protocolo-mobile.png"
+                    src="/images/protocolo-mobile.webp"
                     className={styles.mobileBg}
                     alt="Tattoo ritual background"
                 />

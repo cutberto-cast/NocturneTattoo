@@ -9,7 +9,7 @@ import gsap from "gsap";
 
 const PROJECTS = Array.from({ length: 15 }, (_, i) => ({
     id: i + 1,
-    url: `/images/gallery/tattoo/des${(i % 12) + 1}.jpg`, // Cycling through available images
+    url: `/images/gallery/tattoo/des${(i % 12) + 1}.webp`, // Cycling through available images
     title: `Proyecto ${i + 1}`,
     style: ["Blackwork", "Geometría", "Fine Line", "Realismo", "Minimalista"][i % 5],
 }));
