@@ -71,13 +71,16 @@ export default function Footer() {
                     <div className={styles.logo}>Black Pulse</div>
 
                     <div className={styles.socials}>
+                        <a href="/privacidad" className={styles.socialLink}>Aviso de Privacidad</a>
                         <a href="#" className={styles.socialLink}>Instagram</a>
                         <a href="#" className={styles.socialLink}>WhatsApp</a>
-                        <a href="#" className={styles.socialLink}>Dirección</a>
                     </div>
 
                     <div className={styles.copyright}>
-                        © {new Date().getFullYear()} Black Pulse Studio. Ink as Permanent Art.
+                        <span>© {new Date().getFullYear()} Black Pulse Studio.</span>
+                        <span className={styles.credit}>
+                            Desarrollado por <a href="https://www.axcap.shop" target="_blank" rel="noopener noreferrer" className={styles.creditLink}>AXCAP</a>
+                        </span>
                     </div>
                 </div>
 
