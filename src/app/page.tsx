@@ -12,11 +12,13 @@ export default function Home() {
     <main>
       <Hero />
       <Philosophy />
-      <Gallery />
-      <Studio />
-      <Artists />
-      <Process />
-      <Footer />
+      <div style={{ position: "relative", zIndex: 2, backgroundColor: "var(--color-bg)" }}>
+        <Gallery />
+        <Studio />
+        <Artists />
+        <Process />
+        <Footer />
+      </div>
       <WhatsAppBtn />
     </main>
   );

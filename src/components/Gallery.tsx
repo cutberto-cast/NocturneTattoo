@@ -62,6 +62,19 @@ export default function Gallery() {
     useGSAP(() => {
         if (!wrapperRef.current || !containerRef.current) return;
 
+        gsap.fromTo(`.${styles.title}`, 
+            { opacity: 0, scale: 0.95 },
+            { 
+                opacity: 1, 
+                scale: 1, 
+                duration: 1.5, 
+                ease: "power3.out", 
+                scrollTrigger: { 
+                    trigger: `.${styles.title}`, 
+                    start: "top 85%" 
+                } 
+            });
+
         gsap.to(containerRef.current, {
             x: () => -(containerRef.current!.scrollWidth - window.innerWidth) + "px",
             ease: "none",

@@ -86,6 +86,19 @@ export default function Artists() {
     useGSAP(() => {
         if (!containerRef.current) return;
 
+        gsap.fromTo(`.${styles.title}`, 
+            { opacity: 0, scale: 0.95 },
+            { 
+                opacity: 1, 
+                scale: 1, 
+                duration: 1.5, 
+                ease: "power3.out", 
+                scrollTrigger: { 
+                    trigger: `.${styles.title}`, 
+                    start: "top 85%" 
+                } 
+            });
+
         gsap.fromTo(
             `.${styles.card}`,
             { y: 60, opacity: 0 },

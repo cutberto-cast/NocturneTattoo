@@ -98,6 +98,21 @@ export default function Process() {
             );
         });
 
+        // Shared Title Animation
+        gsap.fromTo(`.${styles.title}, .${styles.mobileTitle}`, 
+            { opacity: 0, scale: 0.95 },
+            { 
+                opacity: 1, 
+                scale: 1, 
+                duration: 1.5, 
+                ease: "power3.out", 
+                scrollTrigger: { 
+                    trigger: `.${styles.title}`, 
+                    start: "top 85%" 
+                } 
+            }
+        );
+
         return () => mm.revert();
     }, { scope: containerRef });
 
@@ -106,13 +121,16 @@ export default function Process() {
 
             {/* DESKTOP VIEW */}
             <div className={styles.desktopView}>
-                <picture className={styles.bgWrapper}>
-                    <img
-                        src="/images/protocolo-bg.webp"
-                        alt="Process Background"
+                <div className={styles.bgWrapper}>
+                    <video
+                        src="/process-bg.mp4"
                         className={styles.bgImage}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
                     />
-                </picture>
+                </div>
 
                 <div className={`container ${styles.contentContainer}`}>
                     <h2 className={styles.title}>Protocolo</h2>
@@ -165,10 +183,13 @@ export default function Process() {
 
             {/* MOBILE VIEW */}
             <div className={styles.mobileView}>
-                <img
-                    src="/images/protocolo-mobile.webp"
+                <video
+                    src="/process-bg.mp4"
                     className={styles.mobileBg}
-                    alt="Tattoo ritual background"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
                 />
                 <div className={styles.mobileOverlay} />
 

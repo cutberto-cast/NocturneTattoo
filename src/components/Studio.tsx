@@ -3,7 +3,13 @@
 import { useRef, useEffect } from "react";
 import Image from "next/image";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import styles from "./Studio.module.css";
+
+if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 const STUDIO_IMAGES = Array.from({ length: 12 }, (_, i) => ({
     id: i + 1,
@@ -14,6 +20,23 @@ const STUDIO_IMAGES = Array.from({ length: 12 }, (_, i) => ({
 export default function Studio() {
     const row1Ref = useRef<HTMLDivElement>(null);
     const row2Ref = useRef<HTMLDivElement>(null);
+
+    const containerRef = useRef<HTMLElement>(null);
+
+    useGSAP(() => {
+        gsap.fromTo(`.${styles.title}`, 
+            { opacity: 0, scale: 0.95 }, 
+            { 
+                opacity: 1, 
+                scale: 1, 
+                duration: 1.5, 
+                ease: "power3.out", 
+                scrollTrigger: { 
+                    trigger: `.${styles.title}`, 
+                    start: "top 85%" 
+                } 
+            });
+    }, { scope: containerRef });
 
     useEffect(() => {
         if (!row1Ref.current || !row2Ref.current) return;
@@ -44,7 +67,7 @@ export default function Studio() {
     const row2Images = [...STUDIO_IMAGES.slice(6, 12), ...STUDIO_IMAGES.slice(6, 12)];
 
     return (
-        <section id="estudio" className={styles.studioSection}>
+        <section id="estudio" className={styles.studioSection} ref={containerRef}>
             <div className={styles.header}>
                 <h2 className={styles.title}>El Estudio</h2>
                 <p className={styles.subtitle}>Donde el arte oscuro cobra vida</p>
